@@ -1,6 +1,6 @@
 {
   "name": "Prototype-V2.0",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "serverlessAppWithExpress",
   "main": "./src/server.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "serverless-http": "latest",
     "node-fetch": "latest",
     "nodemailer": "latest",
-    "path": "latest",
+    "path": "latest"
   },
   "devDependencies": {
     "nodemon": "latest"
