@@ -1,0 +1,26 @@
+{
+  "name": "Prototype-V2.0",
+  "version": "1.0.0",
+  "description": "serverlessAppWithExpress",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src"
+  },
+  "author": "EdAncerys",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "moment": "latest",
+    "netlify-lambda": "latest",
+    "serverless-http": "latest",
+    "node-fetch": "latest",
+    "nodemailer": "latest",
+    "path": "latest",
+  },
+  "devDependencies": {
+    "nodemon": "latest"
+  }
+}
