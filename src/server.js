@@ -8,6 +8,7 @@ require('dotenv').config(); // Enabling to load Environment variables from a .en
 // Import end points
 const freshDesk = require('./freshDesk');
 const appRoutes = require('./appRoutes');
+const form = require('./form');
 
 app.use(express.static(path.join(__dirname, '../dist'))); // Set static folder
 app.set('views', __dirname + '/../dist/views'); // Set views path
@@ -19,6 +20,7 @@ app.use(bodyParser.json()); // parse application/json
 // Middleware
 app.use(freshDesk);
 app.use(appRoutes);
+app.use(form);
 
 // Allowing lambda function to run - exporting handler function
 module.exports = app;
