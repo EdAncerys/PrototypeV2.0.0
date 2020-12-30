@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const serverless = require('serverless-http'); // Serverless module allowing to run lambda functions
 const path = require('path');
+const bodyParser = require('body-parser');
 require('dotenv').config(); // Enabling to load Environment variables from a .env File
 const freshDesk = require('./freshDesk');
 
@@ -9,6 +10,8 @@ app.use(express.static(path.join(__dirname, '../dist'))); // Set static folder
 app.set('views', __dirname + '/../dist/views'); // Set views path
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs'); // set the view engine to ejs
+app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
 
 // Middleware
 app.use(freshDesk);
@@ -23,6 +26,11 @@ app.get('/', (req, res) => {
       password: 'password',
     },
   });
+});
+app.post('/submitForm', (req, res) => {
+  const { name, email } = req.body;
+  console.log('Submitting From');
+  res.json({ name: name, email: email });
 });
 
 // Allowing lambda function to run - exporting handler function
