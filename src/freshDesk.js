@@ -4,14 +4,12 @@ const fetch = require('node-fetch'); // Fetch module
 require('dotenv').config(); // Enabling to load Environment variables from a .env File
 
 freshDesk.get('/freshDeskTickets', async (req, res, next) => {
-  const API_KEY = process.env.API_KEY;
-  const FD_ENDPOINT = process.env.FD_ENDPOINT;
-
   let PATH = '/api/v2/tickets';
-  const URL = `https://${FD_ENDPOINT}.freshdesk.com/${PATH}`;
+  const URL = `https://${process.env.FD_ENDPOINT}.freshdesk.com/${PATH}`;
   const ENCODING_METHOD = 'base64';
   const AUTHORIZATION_KEY =
-    'Basic ' + new Buffer.from(API_KEY + ':' + 'X').toString(ENCODING_METHOD);
+    'Basic ' +
+    new Buffer.from(process.env.API_KEY + ':' + 'X').toString(ENCODING_METHOD);
 
   const defaultOptions = {
     method: 'GET',
