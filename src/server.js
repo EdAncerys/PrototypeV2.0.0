@@ -4,7 +4,10 @@ const serverless = require('serverless-http'); // Serverless module allowing to 
 const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv').config(); // Enabling to load Environment variables from a .env File
+
+// Import end points
 const freshDesk = require('./freshDesk');
+const appRoutes = require('./appRoutes');
 
 app.use(express.static(path.join(__dirname, '../dist'))); // Set static folder
 app.set('views', __dirname + '/../dist/views'); // Set views path
@@ -15,23 +18,7 @@ app.use(bodyParser.json()); // parse application/json
 
 // Middleware
 app.use(freshDesk);
-
-// Routes
-app.get('/', (req, res) => {
-  // res.json({ data: 'Hello World' });
-  res.render('index', {
-    data: {
-      id: 1,
-      name: 'Frodo',
-      password: 'password',
-    },
-  });
-});
-app.post('/submitForm', (req, res) => {
-  const { name, email } = req.body;
-  console.log('Submitting From');
-  res.json({ name: name, email: email });
-});
+app.use(appRoutes);
 
 // Allowing lambda function to run - exporting handler function
 module.exports = app;
