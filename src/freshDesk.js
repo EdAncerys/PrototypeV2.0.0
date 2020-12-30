@@ -1,21 +1,18 @@
 const express = require('express');
 const freshDesk = express();
-const fetch = require('node-fetch');
-require('dotenv').config();
+const fetch = require('node-fetch'); // Fetch module
+require('dotenv').config(); // Enabling to load Environment variables from a .env File
 
 freshDesk.get('/freshDeskTickets', async (req, res, next) => {
-  // Testing Account
-  const API_KEY = 'weUr7kNI1zueQZ66vOcl';
-  const FD_ENDPOINT = 'newaccount1608116901000';
-  // NDG Account
-  // const API_KEY = 'jlPINkcvQ7DRkb6N9tZ';
-  // const FD_ENDPOINT = 'ndgtechnologylimited';
+  const API_KEY = process.env.API_KEY;
+  const FD_ENDPOINT = process.env.FD_ENDPOINT;
 
   let PATH = '/api/v2/tickets';
   const URL = `https://${FD_ENDPOINT}.freshdesk.com/${PATH}`;
   const ENCODING_METHOD = 'base64';
   const AUTHORIZATION_KEY =
     'Basic ' + new Buffer.from(API_KEY + ':' + 'X').toString(ENCODING_METHOD);
+
   const defaultOptions = {
     method: 'GET',
     mode: 'cors',
