@@ -14,14 +14,14 @@ form.post('/submitForm', (req, res, next) => {
   const { name, email } = req.body;
   console.log(`Submitting From: ${name} ${email} `);
   console.log(req.body, res.statusCode);
-  // res.status(200).json({ name: name, email: email });
-  res
-    .status(200)
-    .render('success', {
-      data: 'This is past on data',
-      name: name,
-      email: email,
-    });
+  res.status(200).json({ name: name, email: email });
+  // res
+  //   .status(200)
+  //   .render('success', {
+  //     data: 'This is past on data',
+  //     name: name,
+  //     email: email,
+  //   });
   next();
 });
 
