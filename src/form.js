@@ -10,10 +10,13 @@ form.set('view engine', 'ejs'); // set the view engine to ejs
 form.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 form.use(bodyParser.json()); // parse application/json
 
-form.post('/submitForm', (req, res) => {
+form.post('/submitForm', (req, res, next) => {
   const { name, email } = req.body;
-  console.log('Submitting From');
-  res.json({ name: name, email: email });
+  console.log(`Submitting From: ${name} ${email} `);
+  console.log(res.statusCode);
+  if (res.statusCode === 200)
+    res.status(200).json({ name: name, email: email });
+  next();
 });
 
 module.exports = form;
