@@ -3,7 +3,7 @@ const freshDesk = express();
 const fetch = require('node-fetch');
 require('dotenv').config();
 
-freshDesk.get('/freshDeskTickets', async (req, res) => {
+freshDesk.get('/freshDeskTickets', async (req, res, next) => {
   // Testing Account
   const API_KEY = 'weUr7kNI1zueQZ66vOcl';
   const FD_ENDPOINT = 'newaccount1608116901000';
@@ -41,6 +41,7 @@ freshDesk.get('/freshDeskTickets', async (req, res) => {
     console.log(errorMsg);
     res.json({ msg: errorMsg });
   }
+  next();
 });
 
 module.exports = freshDesk;

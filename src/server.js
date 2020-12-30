@@ -1,7 +1,11 @@
 const express = require('express');
-const serverless = require('serverless-http');
-
 const app = express();
+const serverless = require('serverless-http'); // Serverless module allowing to run lambda functions
+require('dotenv').config(); // Enabling to load Environment variables from a .env File
+const freshDesk = require('./freshDesk');
+
+// Middleware
+app.use(freshDesk);
 
 // Routes
 app.get('/', (req, res) => {
