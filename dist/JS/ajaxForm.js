@@ -11,12 +11,12 @@ $(function () {
     })
       .done(function () {
         // code if form was successfully sent
-        $('.contactForm').trigger('reset'); //reset form
+        $('.clearFormOnSubmit').trigger('reset'); //reset form
         console.log(`Form Submitted Successfully ${name} ${email}`);
       })
-      .fail(function () {
+      .fail(function (error) {
         // code if form was failed
-        console.log('error');
+        console.log(error.statusText);
       });
 
     e.preventDefault();

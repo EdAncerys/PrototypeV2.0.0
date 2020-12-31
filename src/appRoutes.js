@@ -10,15 +10,10 @@ appRoutes.set('view engine', 'ejs'); // set the view engine to ejs
 appRoutes.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 appRoutes.use(bodyParser.json()); // parse application/json
 
-appRoutes.get('/', (req, res, next) => {
-  res.render('index', {
-    data: {
-      id: 1,
-      name: 'Frodo',
-      password: 'password',
-    },
-  });
-  console.log('appRoutes', res.statusCode);
+// Test Page
+appRoutes.get('/testPage', (req, res, next) => {
+  res.render('index');
+  console.log(`From appRoutes`, res.statusCode);
   return;
 });
 

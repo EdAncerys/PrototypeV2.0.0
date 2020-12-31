@@ -13,11 +13,13 @@ form.use(bodyParser.json()); // parse application/json
 form.post('/submitForm', (req, res, next) => {
   const { name, email } = req.body;
   console.log(`Submitting From: ${name} ${email} `);
-  // res.status(200).json({ name: name, email: email });
-  // res.status(200).render('success', {
-  //   data: 'This is past on data',
-  //   name: name,
-  //   email: email,
+  res.status(200).send('Form Submitted Successfully');
+  // res.render('success', {
+  //   data: {
+  //     id: 1,
+  //     name: name,
+  //     password: email,
+  //   },
   // });
   next();
 });
