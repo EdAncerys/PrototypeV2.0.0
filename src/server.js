@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 
 // Middleware
-app.use(freshDesk);
-app.use(appRoutes);
-app.use(form);
+// app.use(freshDesk);
+// app.use(appRoutes);
+// app.use(form);
 app.use(`/.netlify/functions/server`, router);
 
 router.get('/', (req, res) => {
