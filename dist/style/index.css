@@ -11,3 +11,6 @@ body {
   margin: 50px;
   padding: 20px;
 }
+.msg {
+  display: none;
+}

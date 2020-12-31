@@ -11,7 +11,9 @@ $(function () {
     })
       .done(function () {
         // code if form was successfully sent
-        $('.clearFormOnSubmit').trigger('reset'); //reset form
+        $('#formElement').trigger('reset').hide(); //reset form
+        $('#contactForm').trigger('reset').hide(); //reset form
+        $('.msg').show();
         console.log(`Form Submitted Successfully ${name} ${email}`);
       })
       .fail(function (error) {
