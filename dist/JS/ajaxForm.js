@@ -11,7 +11,7 @@ $(function () {
     })
       .done(function () {
         // code if form was successfully sent
-        $('#contactForm').trigger('reset'); //reset form
+        $('.contactForm').trigger('reset'); //reset form
         console.log(`Form Submitted Successfully ${name} ${email}`);
       })
       .fail(function () {
