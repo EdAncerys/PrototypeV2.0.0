@@ -7,7 +7,7 @@ require('dotenv').config(); // Enabling to load Environment variables from a .en
 const router = express.Router();
 
 // Import end points
-const freshDesk = require('./freshDesk');
+// const freshDesk = require('./freshDesk');
 const appRoutes = require('./appRoutes');
 const form = require('./form');
 
@@ -20,8 +20,8 @@ app.use(bodyParser.json()); // parse application/json
 
 // Middleware
 // app.use(freshDesk);
-// app.use(appRoutes);
-// app.use(form);
+app.use(appRoutes);
+app.use(form);
 app.use(`/.netlify/functions/server`, router);
 
 router.get('/', (req, res) => {
