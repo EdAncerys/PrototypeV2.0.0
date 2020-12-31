@@ -4,6 +4,7 @@ const serverless = require('serverless-http'); // Serverless module allowing to 
 const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv').config(); // Enabling to load Environment variables from a .env File
+const router = express.Router();
 
 // Import end points
 const freshDesk = require('./freshDesk');
@@ -21,6 +22,13 @@ app.use(bodyParser.json()); // parse application/json
 app.use(freshDesk);
 app.use(appRoutes);
 app.use(form);
+app.use(`/.netlify/functions/server`, router);
+
+router.get('/', (req, res) => {
+  res.json({
+    data: 'Hello World!',
+  });
+});
 
 // Allowing lambada function to run - exporting handler function
 module.exports = app;
