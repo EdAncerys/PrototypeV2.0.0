@@ -13,7 +13,7 @@ const sendMail = (name, email, message, callback) => {
   const mailOptions = {
     from: process.env.EMAIL_NAME, // replace with your email
     to: process.env.MAILING_LIST, // replace with your mailing list
-    subject: `<p>Customer Contact Form<p>`,
+    subject: `Customer Contact Form`,
     html: `<p>Customer Contact Name: <span style="color: red">${name}</span></p>
     <p>Email: <span style="color: red">${email}</span></p>
     <p>Message: <br />${message}</p>`,

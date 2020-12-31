@@ -22,7 +22,7 @@ app.use(freshDesk);
 app.use(appRoutes);
 app.use(form);
 
-// Allowing lambda function to run - exporting handler function
+// Allowing lambada function to run - exporting handler function
 module.exports = app;
 module.exports.handler = serverless(app);
 
