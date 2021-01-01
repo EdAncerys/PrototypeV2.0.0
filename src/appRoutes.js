@@ -12,7 +12,7 @@ appRoutes.use(bodyParser.json()); // parse application/json
 
 // Test Page
 appRoutes.get('/testPage', (req, res, next) => {
-  res.render('index');
+  res.render('testPage');
   console.log(`From appRoutes`, res.statusCode);
   return;
 });

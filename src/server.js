@@ -20,15 +20,19 @@ app.use(bodyParser.json()); // parse application/json
 
 // Middleware
 // app.use(freshDesk);
-app.use(appRoutes);
-app.use(form);
+// app.use(appRoutes);
+// app.use(form);
 app.use(`/.netlify/functions/server`, router);
 
-router.get('/', (req, res) => {
+router.get('/helloWorld', (req, res) => {
   res.json({
     data: 'Hello World!',
   });
 });
+router.use('/', appRoutes);
+router.use('/', form);
+
+app.use('/', router);
 
 // Allowing lambada function to run - exporting handler function
 module.exports = app;
