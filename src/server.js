@@ -18,10 +18,6 @@ app.set('view engine', 'ejs'); // set the view engine to ejs
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 
-// Middleware
-// app.use(freshDesk);
-// app.use(appRoutes);
-// app.use(form);
 app.use(`/.netlify/functions/server`, router);
 
 router.get('/helloWorld', (req, res) => {
@@ -29,9 +25,10 @@ router.get('/helloWorld', (req, res) => {
     data: 'Hello World!',
   });
 });
+
+// Middleware
 router.use('/', appRoutes);
 router.use('/', form);
-
 app.use('/', router);
 
 // Allowing lambada function to run - exporting handler function
